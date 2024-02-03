@@ -1,12 +1,15 @@
 import { createApp } from 'vue';
 import { createRouter, createWebHistory } from 'vue-router';
 
-import Home from './pages/index.vue';
-import Catalog from './pages/catalog/index.vue';
-import CatalogCategory from './pages/catalog/category.vue';
-import CatalogDetail from './pages/catalog/id.vue';
+import Home from '@/pages/index.vue';
+import Catalog from '@/pages/catalog/index.vue';
+import CatalogCategory from '@/pages/catalog/category.vue';
+import CatalogDetail from '@/pages/catalog/id.vue';
+import Cart from '@/pages/cart.vue';
 
-import App from './App.vue';
+import App from '@/App.vue';
+
+import '@/assets/main.css';
 
 const routes = [
     { 
@@ -15,15 +18,24 @@ const routes = [
     },
     { 
         path: '/catalog', 
-        component: Catalog 
+        component: Catalog,
+        children: [
+            { 
+                path: ':category', 
+                component: CatalogCategory,
+                children: [
+                    { 
+                        path: ':id', 
+                        component: CatalogDetail 
+                    }
+                ]
+            
+            }
+        ]
     },
     { 
-        path: '/catalog/:category', 
-        component: CatalogCategory 
-    },
-    { 
-        path: '/catalog/:category/:id', 
-        component: CatalogDetail 
+        path: '/cart', 
+        component: Cart 
     }
 ];
 

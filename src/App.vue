@@ -1,13 +1,28 @@
 <template>
-  <router-link to="/">
-    Главная
-  </router-link>
+  <div class="layout">
+    <v-header/>
 
-  <router-link to="/catalog">
-    Каталог
-  </router-link>
+    <main class="layout__main">
+      <router-view/>
+    </main>
 
-  <hr>
-
-  <router-view/>
+    <v-footer/>
+  </div>
 </template>
+
+<script setup>
+  import VHeader from '@/components/VHeader.vue';
+  import VFooter from '@/components/VFooter.vue';
+</script>
+
+<style>
+  .layout {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .layout__main {
+    flex: 1;
+  }
+</style>
