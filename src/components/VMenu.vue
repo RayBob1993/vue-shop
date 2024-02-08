@@ -11,6 +11,10 @@
         <router-link to="/cart" class="v-menu__item">
             Корзина
         </router-link>
+
+        <router-link to="/profile" class="v-menu__item">
+            Профиль
+        </router-link>
     </nav>
 </template>
 

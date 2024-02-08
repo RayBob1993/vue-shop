@@ -11,17 +11,20 @@
 </template>
 
 <script setup>
+    import { ref, watch } from 'vue'
     import { api } from '@/utils/api';
-    import { useRoute } from "vue-router";
-    import { useCatalogCategory } from '@/composables/useCatalogCategory';
+    import { useRoute } from 'vue-router';
     import VContainer from '@/components/VContainer.vue';
     import VCatalogCard from '@/components/VCatalogCard.vue';
 
+    const products = ref([]);
+
     const route = useRoute();
 
-    const { products, getProductsCategory } = useCatalogCategory();
-
-    getProductsCategory(route.params.category);
+    api(`/products/search?q=${route.query.q}`)
+        .then(data => {
+            products.value = data.products;
+        });
 
     function onAddToCart (params) {
         api('/carts/add', 'post', {
@@ -33,4 +36,11 @@
             alert('Товар добавлен успешно!')
         });
     }
+
+    watch(() => route.query.q, () => {
+        api(`/products/search?q=${route.query.q}`)
+            .then(data => {
+                products.value = data.products;
+            });
+    });
 </script>

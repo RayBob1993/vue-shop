@@ -6,6 +6,8 @@ import Catalog from '@/pages/catalog/index.vue';
 import CatalogCategory from '@/pages/catalog/category.vue';
 import CatalogDetail from '@/pages/catalog/id.vue';
 import Cart from '@/pages/cart.vue';
+import Profile from '@/pages/profile/index.vue';
+import Search from '@/pages/search.vue';
 
 import App from '@/App.vue';
 
@@ -16,26 +18,29 @@ const routes = [
         path: '/', 
         component: Home 
     },
+    {
+        path: '/search',
+        component: Search
+    },
     { 
         path: '/catalog', 
-        component: Catalog,
-        children: [
-            { 
-                path: ':category', 
-                component: CatalogCategory,
-                children: [
-                    { 
-                        path: ':id', 
-                        component: CatalogDetail 
-                    }
-                ]
-            
-            }
-        ]
+        component: Catalog
+    },
+    { 
+        path: '/catalog/:category', 
+        component: CatalogCategory,
+    },
+    { 
+        path: '/catalog/:category/:id', 
+        component: CatalogDetail 
     },
     { 
         path: '/cart', 
         component: Cart 
+    },
+    { 
+        path: '/profile', 
+        component: Profile 
     }
 ];
 
