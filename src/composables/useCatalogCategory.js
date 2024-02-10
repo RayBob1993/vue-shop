@@ -1,11 +1,11 @@
 import { ref } from 'vue';
-import { api } from '@/utils/api';
+import { CatalogApiService } from '@/services';
 
 export function useCatalogCategory () {
     const products = ref([]);
 
     function getProductsCategory (category) {
-        api(`/products/category/${category}`)
+        CatalogApiService.getCategory(category)
             .then(data => {
                 products.value = data.products;
             });

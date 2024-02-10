@@ -17,13 +17,10 @@
 </template>
 
 <script setup>
-    import { ref } from 'vue';
-    import { api } from '@/utils/api';
+    import { useCart } from '@/composables';
+    import VContainer from '@/components/VContainer.vue';
 
-    const cart = ref();
+    const { cart, getCart } = useCart();
 
-    api('/carts')
-        .then(data => {
-            cart.value = data.carts[0];
-        });
+    getCart();
 </script>

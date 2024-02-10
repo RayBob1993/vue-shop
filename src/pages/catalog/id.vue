@@ -7,14 +7,14 @@
 <script setup>
     import { ref } from 'vue';
     import { useRoute } from "vue-router";
-    import { api } from '@/utils/api';
+    import { CatalogApiService } from '@/services';
     import VContainer from '@/components/VContainer.vue';
 
     const route = useRoute();
 
     const product = ref();
 
-    api(`/products/${route.params.id}`)
+    CatalogApiService.getProduct(route.params.id)
         .then(data => {
             product.value = data;
         });

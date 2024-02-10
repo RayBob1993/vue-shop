@@ -11,8 +11,8 @@
 </template>
 
 <script setup>
-    import { api } from '@/utils/api';
     import { useRoute } from "vue-router";
+    import { useCart } from '@/composables/useCart';
     import { useCatalogCategory } from '@/composables/useCatalogCategory';
     import VContainer from '@/components/VContainer.vue';
     import VCatalogCard from '@/components/VCatalogCard.vue';
@@ -20,17 +20,7 @@
     const route = useRoute();
 
     const { products, getProductsCategory } = useCatalogCategory();
+    const { onAddToCart } = useCart();
 
     getProductsCategory(route.params.category);
-
-    function onAddToCart (params) {
-        api('/carts/add', 'post', {
-            userId: 1,
-            products: [
-                params
-            ]
-        }).then(() => {
-            alert('Товар добавлен успешно!')
-        });
-    }
 </script>

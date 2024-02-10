@@ -10,14 +10,10 @@
 </template>
 
 <script setup>
-    import { ref } from 'vue';
-    import { api } from '@/utils/api'
     import VContainer from '@/components/VContainer.vue';
+    import { useCatalog } from '@/composables';
 
-    const categories = ref([]);
+    const { categories, getCatalog } = useCatalog();
 
-    api(`/products/categories/`)
-        .then(data => {
-            categories.value = data;
-        });
+    getCatalog();
 </script>

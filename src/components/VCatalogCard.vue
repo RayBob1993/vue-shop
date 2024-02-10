@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="v-catalog-card">
         <router-link :to="`/catalog/${category}/${id}`">
             {{ title }}
         </router-link>

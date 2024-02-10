@@ -1,46 +1,41 @@
 <template>
     <v-container>
-        <v-catalog-card 
-            v-for="product in products"
-            :id="product.id"
-            :title="product.title"
-            :category="product.category"
-            @add-to-cart="onAddToCart"
-        />
+        <template v-if="!isLoading">
+            <v-catalog-card 
+                v-if="products.length"
+                v-for="product in products"
+                :id="product.id"
+                :title="product.title"
+                :category="product.category"
+                @add-to-cart="onAddToCart"
+            />
+
+            <div v-else>
+                По вашему запросу {{ route.query.q }} - ничего не найдено
+            </div>
+        </template>
+
+        <div v-else>
+            Загрузка...
+        </div>
     </v-container>
 </template>
 
 <script setup>
-    import { ref, watch } from 'vue'
-    import { api } from '@/utils/api';
+    import { watch } from 'vue'
     import { useRoute } from 'vue-router';
+    import { useSearch, useCart } from '@/composables';
     import VContainer from '@/components/VContainer.vue';
     import VCatalogCard from '@/components/VCatalogCard.vue';
 
-    const products = ref([]);
+    const { products, isLoading, getSearch } = useSearch();
+    const { onAddToCart } = useCart();
 
     const route = useRoute();
 
-    api(`/products/search?q=${route.query.q}`)
-        .then(data => {
-            products.value = data.products;
-        });
-
-    function onAddToCart (params) {
-        api('/carts/add', 'post', {
-            userId: 1,
-            products: [
-                params
-            ]
-        }).then(() => {
-            alert('Товар добавлен успешно!')
-        });
-    }
+    getSearch(route.query.q);
 
     watch(() => route.query.q, () => {
-        api(`/products/search?q=${route.query.q}`)
-            .then(data => {
-                products.value = data.products;
-            });
+        getSearch(route.query.q);
     });
 </script>
