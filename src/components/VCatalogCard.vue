@@ -1,5 +1,9 @@
 <template>
-    <div class="v-catalog-card">
+    <article class="v-catalog-card">
+        <router-link :to="`/catalog/${category}/${id}`">
+            <img :src="image" class="v-catalog-card__image">
+        </router-link>
+
         <router-link :to="`/catalog/${category}/${id}`">
             {{ title }}
         </router-link>
@@ -13,7 +17,7 @@
         <button @click="onAddToCart">
             Добавить в корзину
         </button>
-    </div>
+    </article>
 </template>
 
 <script setup>
@@ -27,6 +31,9 @@
             type: Number
         },
         title: {
+            type: String
+        },
+        image: {
             type: String
         }
     });
@@ -44,3 +51,17 @@
         });
     }
 </script>
+
+<style>
+    .v-catalog-card {
+        border: 1px solid;
+    }
+
+    .v-catalog-card__image {
+        display: block;
+        width: 100%;
+        height: 200px;
+
+        object-fit: cover;
+    }
+</style>

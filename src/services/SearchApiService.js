@@ -1,4 +1,4 @@
-import { api } from '@/utils/api';
+import { api } from '@/utils';
 
 export class SearchApiService {
     static getSearch (q) {

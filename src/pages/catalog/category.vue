@@ -3,6 +3,7 @@
         <v-catalog-card 
             v-for="product in products"
             :id="product.id"
+            :image="product.thumbnail"
             :title="product.title"
             :category="product.category"
             @add-to-cart="onAddToCart"

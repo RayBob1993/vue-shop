@@ -1,9 +1,5 @@
 <template>
     <nav class="v-menu">
-        <router-link to="/" class="v-menu__item">
-            Главная
-        </router-link>
-
         <router-link to="/catalog" class="v-menu__item">
             Каталог
         </router-link>
@@ -11,12 +7,14 @@
         <router-link to="/cart" class="v-menu__item">
             Корзина
         </router-link>
-
-        <router-link to="/profile" class="v-menu__item">
-            Профиль
-        </router-link>
     </nav>
 </template>
+
+<script setup>
+    import { useAuth } from '@/composables';
+
+    const { isAuth } = useAuth();
+</script>
 
 <style>
     .v-menu {
