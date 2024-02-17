@@ -3,9 +3,9 @@
         <v-catalog-card 
             v-for="product in products"
             :id="product.id"
-            :image="product.thumbnail"
+            :image="product.image"
             :title="product.title"
-            :category="product.category"
+            :category="product.categoryId"
             @add-to-cart="onAddToCart"
         />
     </v-container>

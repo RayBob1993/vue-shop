@@ -5,11 +5,11 @@ import App from '@/App.vue';
 
 import '@/assets/main.css';
 
-const { authInit, getUser } = useAuth();
+// const { authInit } = useAuth();
 
 const app = createApp(App);
 
-authInit();
+// authInit();
 
 app.use(router);
 

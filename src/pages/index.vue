@@ -2,27 +2,30 @@
     <v-container>
         <h2>Каталог смартфонов</h2>
 
-        <router-link
+        <v-catalog-card 
             v-for="product in smartphones"
-            :to="`/catalog/${product.category}/${product.id}`"
-        >
-            {{ product.title }}
-        </router-link>
+            :id="product.id"
+            :image="product.image"
+            :title="product.title"
+            :category="product.categoryId"
+        />
 
         <h2>Каталог laptops</h2>
 
-        <router-link
-            v-for="product in laptops"
-            :to="`/catalog/${product.category}/${product.id}`"
-        >
-            {{ product.title }}
-        </router-link>
+        <v-catalog-card 
+            v-for="product in smartphones"
+            :id="product.id"
+            :image="product.image"
+            :title="product.title"
+            :category="product.categoryId"
+        />
     </v-container>
 </template>
 
 <script setup>
     import { useCatalogCategory } from '@/composables/useCatalogCategory';
     import VContainer from '@/components/VContainer.vue';
+    import VCatalogCard from '@/components/VCatalogCard.vue';
 
     const { 
         products: smartphones, 
@@ -34,6 +37,6 @@
         getProductsCategory: getProductsCategoryLaptops
     } = useCatalogCategory();
 
-    getProductsCategorySmartphones('smartphones');
-    getProductsCategoryLaptops('laptops');
+    getProductsCategorySmartphones(1);
+    getProductsCategoryLaptops(2);
 </script>

@@ -10,7 +10,7 @@ export function useSearch () {
 
         SearchApiService.getSearch(query)
             .then(data => {
-                products.value = data.products;
+                products.value = data;
 
                 isLoading.value = false;
             });

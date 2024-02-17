@@ -1,29 +1,19 @@
-const BASE_URL = 'https://dummyjson.com';
+const BASE_URL = 'http://localhost:3000';
 
 export const api = {
     get (url) {
-        const token = localStorage.getItem('token');
-
         return fetch(BASE_URL + url, {
             headers: { 
-                'Content-Type': 'application/json',
-                ...token && { 
-                    'Authorization': `Bearer ${token}`
-                }
+                'Content-Type': 'application/json'
             }
         })
             .then(res => res.json());
     },
     post (url, params) {
-        const token = localStorage.getItem('token');
-
         return fetch(BASE_URL + url, {
             method: 'post',
             headers: { 
-                'Content-Type': 'application/json',
-                ...token && { 
-                    'Authorization': `Bearer ${token}` 
-                }
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify(params)
         })

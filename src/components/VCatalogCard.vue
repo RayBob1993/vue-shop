@@ -25,7 +25,7 @@
 
     const props = defineProps({
         category: {
-            type: String
+            type: [String, Number]
         },
         id: {
             type: Number

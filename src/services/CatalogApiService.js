@@ -2,11 +2,11 @@ import { api } from '@/utils';
 
 export class CatalogApiService {
     static getCategories () {
-        return api.get('/products/categories/');
+        return api.get('/catalog');
     }
 
-    static getCategory (category) {
-        return api.get(`/products/category/${category}`);
+    static getCategory (id) {
+        return api.get(`/catalog/${id}`);
     }
 
     static getProduct (id) {

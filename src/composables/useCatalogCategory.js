@@ -4,10 +4,10 @@ import { CatalogApiService } from '@/services';
 export function useCatalogCategory () {
     const products = ref([]);
 
-    function getProductsCategory (category) {
-        CatalogApiService.getCategory(category)
+    function getProductsCategory (id) {
+        CatalogApiService.getCategory(id)
             .then(data => {
-                products.value = data.products;
+                products.value = data;
             });
     }
 

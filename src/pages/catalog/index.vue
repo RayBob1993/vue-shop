@@ -2,9 +2,9 @@
     <v-container>
         <router-link 
             v-for="category in categories"
-            :to="`/catalog/${category}`"
+            :to="`/catalog/${category.id}`"
         >
-            {{ category }}
+            {{ category.title }}
         </router-link>
     </v-container>
 </template>
