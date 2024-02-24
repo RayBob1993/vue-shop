@@ -19,6 +19,14 @@ const routes = [
             auth: false
         }
     },
+    { 
+        name: 'SignUp',
+        path: '/auth/sign-up', 
+        component: () => import('@/pages/auth/sign-up.vue'),
+        meta: {
+            auth: false
+        }
+    },
     {
         name: 'Search',
         path: '/search',

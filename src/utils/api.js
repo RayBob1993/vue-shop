@@ -18,5 +18,15 @@ export const api = {
             body: JSON.stringify(params)
         })
             .then(res => res.json());
+    },
+    patch (url, params) {
+        return fetch(BASE_URL + url, {
+            method: 'PATCH',
+            headers: { 
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(params)
+        })
+            .then(res => res.json());
     }
 }
