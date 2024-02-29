@@ -28,5 +28,15 @@ export const api = {
             body: JSON.stringify(params)
         })
             .then(res => res.json());
-    }
+    },
+    delete (url, params) {
+        return fetch(BASE_URL + url, {
+            method: 'DELETE',
+            headers: { 
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(params)
+        })
+            .then(res => res.json());
+    },
 }

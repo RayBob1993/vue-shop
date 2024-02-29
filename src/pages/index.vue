@@ -29,6 +29,7 @@
             >
                 <v-catalog-card 
                     :id="product.id"
+                    :price="product.price"
                     :image="product.image"
                     :title="product.title"
                     :category="product.categoryId"

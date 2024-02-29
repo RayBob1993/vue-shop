@@ -70,6 +70,14 @@ const routes = [
         }
     },
     { 
+        name: 'Ordering',
+        path: '/ordering', 
+        component: () => import('@/pages/ordering.vue'),
+        meta: {
+            auth: true
+        }
+    },
+    { 
         name: 'Profile',
         path: '/profile', 
         component: () => import('@/pages/profile/index.vue'),
