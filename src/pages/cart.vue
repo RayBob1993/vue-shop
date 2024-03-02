@@ -8,16 +8,37 @@
             Сумма товаров: {{ cartTotalSum }}р.
         </div>
 
-        <v-cart-card 
-            v-for="cartItem in cart"
-            :id="cartItem.id"
-            :title="cartItem.title"
-            :price="cartItem.price"
-            :quantity="cartItem.quantity"
-            :image="cartItem.image"
-            @change-count="onChangeCount"
-            @delete="onDelete"
-        />
+        <template v-if="cartNotDelay.length">
+            <h5>Товары</h5>
+            <v-cart-card 
+                v-for="cartItem in cartNotDelay"
+                :id="cartItem.id"
+                :title="cartItem.title"
+                :price="cartItem.price"
+                :quantity="cartItem.quantity"
+                :image="cartItem.image"
+                :delay="cartItem.delay"
+                @change-count="onChangeCount"
+                @change-delay="onChangeDelay"
+                @delete="onDelete"
+            />
+        </template>
+
+        <template v-if="cartDelay.length">
+            <h5>Отложенные товары</h5>
+            <v-cart-card 
+                v-for="cartItem in cartDelay"
+                :id="cartItem.id"
+                :title="cartItem.title"
+                :price="cartItem.price"
+                :quantity="cartItem.quantity"
+                :image="cartItem.image"
+                :delay="cartItem.delay"
+                @change-count="onChangeCount"
+                @change-delay="onChangeDelay"
+                @delete="onDelete"
+            />
+        </template>
 
         <router-link to="/ordering">
             Перейти к оформлению
@@ -30,7 +51,16 @@
     import VContainer from '@/components/VContainer.vue';
     import VCartCard from '@/components/VCartCard.vue';
 
-    const { cart, cartTotalCount, cartTotalSum, getCart, onChangeCount, onDelete } = useCart();
+    const { 
+        cartDelay,
+        cartNotDelay,
+        cartTotalCount, 
+        cartTotalSum, 
+        getCart, 
+        onChangeCount, 
+        onChangeDelay, 
+        onDelete 
+    } = useCart();
 
     getCart();
 </script>

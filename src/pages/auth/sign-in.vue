@@ -26,7 +26,7 @@
     import { useAuth } from '@/composables';
  
     const model = ref({
-        login: 'Test',
+        login: 'Test2',
         password: '12345'
     });
 

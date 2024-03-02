@@ -14,7 +14,6 @@
                     :title="product.title"
                     :category="product.categoryId"
                     :is-favorites="product.isFavorites"
-                    @add-to-cart="onAddToCart"
                 />
             </v-col>
         </v-row>
@@ -22,18 +21,8 @@
 </template>
 
 <script setup>
-    import { useRoute } from "vue-router";
-    import { useCart } from '@/composables/useCart';
-    import { useCatalogCategory } from '@/composables/useCatalogCategory';
     import VContainer from '@/components/VContainer.vue';
     import VRow from '@/components/UI/VRow.vue';
     import VCol from '@/components/UI/VCol.vue';
     import VCatalogCard from '@/components/VCatalogCard.vue';
-
-    const route = useRoute();
-
-    const { products, getProductsCategory } = useCatalogCategory();
-    const { onAddToCart } = useCart();
-
-    getProductsCategory(route.params.category);
 </script>

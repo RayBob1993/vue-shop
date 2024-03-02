@@ -15,6 +15,12 @@ export class CartApiService {
         })
     }
 
+    static changeDelay (params) {
+        return api.patch(`/cart/${params.id}`, {
+            delay: params.delay
+        })
+    }
+
     static delete (id) {
         return api.delete(`/cart/${id}`);
     }

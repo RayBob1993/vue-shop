@@ -12,4 +12,12 @@ export class CatalogApiService {
     static getProduct (id) {
         return api.get(`/products/${id}`);
     }
+
+    static addProduct (params) {
+        return api.post('/products', params);
+    }
+
+    static getUserProducts (userId) {
+        return api.get(`/my-products/${userId}`);
+    }
 }

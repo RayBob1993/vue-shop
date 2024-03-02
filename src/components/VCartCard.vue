@@ -12,6 +12,18 @@
         <v-button @click="onDelete">
             Удалить
         </v-button>
+
+        <br><br>
+
+        <label>
+            <input 
+                type="checkbox" 
+                v-model="checked"
+                @change="onChangeDelay"
+            > 
+            
+            Добавить в отложенные
+        </label>
         <hr>
     </div>
 </template>
@@ -36,20 +48,33 @@
         },
         price: {
             type: Number
+        },
+        delay: {
+            type: Boolean
         }
     });
 
     const emit = defineEmits([
         'changeCount',
+        'changeDelay',
         'delete'
     ]);
 
     const count = ref(props.quantity);
 
+    const checked = ref(props.delay);
+
     function onChangeCount () {
         emit('changeCount', {
             id: props.id,
             quantity: count.value
+        });
+    }
+
+    function onChangeDelay () {
+        emit('changeDelay', {
+            id: props.id,
+            delay: checked.value
         });
     }
 

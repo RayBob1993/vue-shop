@@ -4,6 +4,9 @@ import { CartApiService } from '@/services';
 export function useCart () {
     const cart = ref([]);
 
+    const cartDelay = computed(() => cart.value.filter(item => item.delay));
+    const cartNotDelay = computed(() => cart.value.filter(item => !item.delay));
+
     const cartTotalSum = computed(() => {
         return cart.value.reduce((acc, product) => {
             return acc += (product.price * product.quantity);
@@ -43,13 +46,22 @@ export function useCart () {
             });
     }
 
+    function onChangeDelay (params) {
+        CartApiService.changeDelay(params)
+            .then(() => {
+                getCart();
+            });
+    }
+
     return {
-        cart,
+        cartDelay,
+        cartNotDelay,
         cartTotalSum,
         cartTotalCount,
         getCart,
         onAddToCart,
         onChangeCount,
-        onDelete
+        onDelete,
+        onChangeDelay
     }
 }

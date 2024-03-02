@@ -1,5 +1,17 @@
 <template>
     <v-container>
+        <nav>
+            <router-link to="/profile/add-product">
+                Добавить товар
+            </router-link>
+
+            <router-link to="/profile/products">
+                Мои товары
+            </router-link>
+        </nav>
+
+        <br><br>
+
         <div v-if="user">
             <div>Логин: <input type="text" v-model="model.login"></div>
             <div>Имя: <input type="text" v-model="model.firstname"></div>

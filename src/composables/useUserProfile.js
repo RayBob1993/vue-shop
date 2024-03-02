@@ -1,4 +1,4 @@
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import { useAuth } from '@/composables';
 
 export function useUserProfile () {
@@ -13,14 +13,22 @@ export function useUserProfile () {
         phone: ''
     });
 
-    model.value.login = user.value.login;
-    model.value.lastname = user.value.lastname;
-    model.value.firstname = user.value.firstname;
-    model.value.birthday = user.value.birthday;
-    model.value.email = user.value.email;
-    model.value.phone = user.value.phone;
+    watch(user, value => {
+        if (!value) {
+            return;
+        }
+
+        model.value.login = value.login;
+        model.value.lastname = value.lastname;
+        model.value.firstname = value.firstname;
+        model.value.birthday = value.birthday;
+        model.value.email = value.email;
+        model.value.phone = value.phone;
+    }, {
+        immediate: true
+    });
 
     return {
         model
-    }
+    };
 }

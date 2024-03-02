@@ -24,6 +24,15 @@
             theme="primary"
             size="large"
             wide
+            @click="onAddToFavorites"
+        >
+            {{ isFavorites ? 'Удалить из избранного' : 'Добавить в избранное' }}
+        </v-button>
+
+        <v-button
+            theme="primary"
+            size="large"
+            wide
             @click="onAddToCart"
         >
             Добавить в корзину
@@ -51,11 +60,15 @@
         },
         image: {
             type: String
+        },
+        isFavorites: {
+            type: Boolean
         }
     });
 
     const emit = defineEmits([
-        'addToCart'
+        'addToCart',
+        'addToFavorites'
     ]);
 
     const count = ref(1);
@@ -67,6 +80,13 @@
             price: props.price,
             id: props.id,
             quantity: count.value
+        });
+    }
+
+    function onAddToFavorites () {
+        emit('addToFavorites', {
+            id: props.id,
+            isFavorites: !props.isFavorites
         });
     }
 </script>
