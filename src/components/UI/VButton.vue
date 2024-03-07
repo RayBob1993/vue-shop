@@ -56,17 +56,27 @@
     }
 
     .v-button--theme-primary {
-        background-color: #000;
-        border-color: #000;
+        background-color: #0d6efd;
+        border-color: #0d6efd;
 
         color: #fff;
     }
 
     .v-button--theme-primary:hover {
-        background-color: #fff;
-        border-color: #fff;
+        background-color: #0b5ed7;
+        border-color: #0b5ed7;
+    }
 
-        color: #000;
+    .v-button--theme-success {
+        background-color: #198754;
+        border-color: #198754;
+
+        color: #fff;
+    }
+
+    .v-button--theme-success:hover {
+        background-color: #157347;
+        border-color: #157347;
     }
 
     .v-button--theme-secondary {

@@ -5,8 +5,16 @@ export class CatalogApiService {
         return api.get('/catalog');
     }
 
-    static getCategory (id) {
-        return api.get(`/catalog/${id}`);
+    static getCategory (id, test) {
+        const query = test ? `&test=${test}`: '';
+
+        return api.get(`/products?categoryId=${id}${query}`);
+    }
+
+    static getCategorySort (id, sort) {
+        const orderType = sort ? 'desc' : 'asc';
+        
+        return api.get(`/products?categoryId=${id}&_sort=title&_order=${orderType}`);
     }
 
     static getProduct (id) {

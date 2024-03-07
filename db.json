@@ -60,6 +60,27 @@
       "id": 5,
       "quantity": 1,
       "delay": true
+    },
+    {
+      "image": "https://placehold.co/600x400",
+      "title": "Ноут Димы",
+      "images": [
+        "https://placehold.co/600x401",
+        "https://placehold.co/600x402",
+        "https://placehold.co/600x403",
+        "https://placehold.co/600x404",
+        "https://placehold.co/600x405",
+        "https://placehold.co/600x406",
+        "https://placehold.co/600x407",
+        "https://placehold.co/600x408"
+      ],
+      "description": "d;ofnvos dnfoiv soidnfoi bnsdfoignb oidfngoib ndfoing boidfng boin",
+      "categoryId": 2,
+      "price": "100500",
+      "userId": 1,
+      "isFavorites": false,
+      "id": 6,
+      "quantity": 6
     }
   ],
   "categories": [
@@ -76,83 +97,128 @@
     {
       "id": 1,
       "image": "https://placehold.co/600x400",
+      "images": [
+        "https://placehold.co/600x401",
+        "https://placehold.co/600x402",
+        "https://placehold.co/600x403",
+        "https://placehold.co/600x404",
+        "https://placehold.co/600x405",
+        "https://placehold.co/600x406",
+        "https://placehold.co/600x407",
+        "https://placehold.co/600x408"
+      ],
+      "description": "d;ofnvos dnfoiv soidnfoi bnsdfoignb oidfngoib ndfoing boidfng boin",
       "title": "iPhone 10",
       "categoryId": 1,
       "price": 10000,
+      "test": "1",
       "userId": 2,
       "isFavorites": false
     },
     {
+      "test": "1",
       "id": 2,
       "title": "Samsung note 2",
       "image": "https://placehold.co/600x400",
+      "images": [
+        "https://placehold.co/600x401",
+        "https://placehold.co/600x402",
+        "https://placehold.co/600x403",
+        "https://placehold.co/600x404",
+        "https://placehold.co/600x405",
+        "https://placehold.co/600x406",
+        "https://placehold.co/600x407",
+        "https://placehold.co/600x408"
+      ],
+      "description": "d;ofnvos dnfoiv soidnfoi bnsdfoignb oidfngoib ndfoing boidfng boin",
       "categoryId": 1,
       "price": 5000,
       "userId": 2,
       "isFavorites": true
     },
     {
+      "test": "2",
       "id": 3,
       "title": "Acer ,fkf,fk",
       "image": "https://placehold.co/600x400",
+      "images": [
+        "https://placehold.co/600x401",
+        "https://placehold.co/600x402",
+        "https://placehold.co/600x403",
+        "https://placehold.co/600x404",
+        "https://placehold.co/600x405",
+        "https://placehold.co/600x406",
+        "https://placehold.co/600x407",
+        "https://placehold.co/600x408"
+      ],
+      "description": "d;ofnvos dnfoiv soidnfoi bnsdfoignb oidfngoib ndfoing boidfng boin",
       "categoryId": 2,
       "price": 6000,
       "userId": 2,
       "isFavorites": false
     },
     {
+      "test": "2",
       "id": 4,
       "image": "https://placehold.co/600x400",
+      "images": [
+        "https://placehold.co/600x401",
+        "https://placehold.co/600x402",
+        "https://placehold.co/600x403",
+        "https://placehold.co/600x404",
+        "https://placehold.co/600x405",
+        "https://placehold.co/600x406",
+        "https://placehold.co/600x407",
+        "https://placehold.co/600x408"
+      ],
+      "description": "d;ofnvos dnfoiv soidnfoi bnsdfoignb oidfngoib ndfoing boidfng boin",
       "title": "iPhone 10",
       "categoryId": 1,
       "price": 5000,
       "userId": 2,
-      "isFavorites": false
+      "isFavorites": true
     },
     {
+      "test": "1",
       "id": 5,
       "title": "Samsung note 2",
       "image": "https://placehold.co/600x400",
+      "images": [
+        "https://placehold.co/600x401",
+        "https://placehold.co/600x402",
+        "https://placehold.co/600x403",
+        "https://placehold.co/600x404",
+        "https://placehold.co/600x405",
+        "https://placehold.co/600x406",
+        "https://placehold.co/600x407",
+        "https://placehold.co/600x408"
+      ],
+      "description": "d;ofnvos dnfoiv soidnfoi bnsdfoignb oidfngoib ndfoing boidfng boin",
       "categoryId": 1,
       "price": 7000,
       "userId": 2,
       "isFavorites": false
     },
     {
-      "id": 6,
-      "title": "Acer ,fkf,fk",
+      "test": "2",
       "image": "https://placehold.co/600x400",
-      "categoryId": 2,
-      "userId": 1,
-      "price": 15000,
-      "isFavorites": false
-    },
-    {
-      "image": "",
-      "title": "sdfgbsgb",
-      "categoryId": 2,
-      "price": "100500",
-      "userId": 1,
-      "id": 7,
-      "isFavorites": false
-    },
-    {
-      "image": "dfg",
-      "title": "dfgbf",
+      "title": "Ноут Димы",
+      "images": [
+        "https://placehold.co/600x401",
+        "https://placehold.co/600x402",
+        "https://placehold.co/600x403",
+        "https://placehold.co/600x404",
+        "https://placehold.co/600x405",
+        "https://placehold.co/600x406",
+        "https://placehold.co/600x407",
+        "https://placehold.co/600x408"
+      ],
+      "description": "d;ofnvos dnfoiv soidnfoi bnsdfoignb oidfngoib ndfoing boidfng boin",
       "categoryId": 2,
       "price": "100500",
       "userId": 1,
-      "id": 8,
-      "isFavorites": false
-    },
-    {
-      "image": "sdfv",
-      "title": "sdfvdfgb",
-      "categoryId": 1,
-      "price": "sdfvsdfv",
-      "userId": 1,
-      "id": 12,
-      "isFavorites": false
+      "id": 6,
+      "isFavorites": true
     }
   ],
   "users": [

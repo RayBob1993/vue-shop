@@ -4,8 +4,15 @@ import { CatalogApiService } from '@/services';
 export function useCatalogCategory () {
     const products = ref([]);
 
-    function getProductsCategory (id) {
-        CatalogApiService.getCategory(id)
+    function getProductsCategory (id, test) {
+        CatalogApiService.getCategory(id, test)
+            .then(data => {
+                products.value = data;
+            });
+    }
+
+    function getCategorySort (id, sort) {
+        CatalogApiService.getCategorySort(id, sort)
             .then(data => {
                 products.value = data;
             });
@@ -13,6 +20,7 @@ export function useCatalogCategory () {
 
     return {
         products,
-        getProductsCategory
+        getProductsCategory,
+        getCategorySort
     }
 }

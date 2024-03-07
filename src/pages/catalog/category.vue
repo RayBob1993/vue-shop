@@ -1,6 +1,17 @@
 <template>
     <v-container>
         <v-row>
+            <v-col>
+                <input type="radio" v-model="test" name="test" value="1" @change="onFilter"> 1
+                <input type="radio" v-model="test" name="test" value="2" @change="onFilter"> 2
+            </v-col>
+
+            <v-col>
+                <input type="checkbox" v-model="sort" @change="onSort"> Сортировка по id
+            </v-col>
+        </v-row>
+
+        <v-row>
             <v-col 
                 v-for="product in products"
                 span="3"
@@ -22,6 +33,7 @@
 </template>
 
 <script setup>
+    import { ref } from 'vue';
     import { useRoute } from "vue-router";
     import { useCart } from '@/composables/useCart';
     import { useCatalogCategory } from '@/composables/useCatalogCategory';
@@ -32,8 +44,19 @@
 
     const route = useRoute();
 
-    const { products, getProductsCategory } = useCatalogCategory();
+    const test = ref();
+    const sort = ref();
+
+    const { products, getProductsCategory, getCategorySort } = useCatalogCategory();
     const { onAddToCart } = useCart();
 
     getProductsCategory(route.params.category);
+
+    function onFilter () {
+        getProductsCategory(route.params.category, test.value);
+    }
+
+    function onSort () {
+        getCategorySort(route.params.category, sort.value)
+    }
 </script>

@@ -21,7 +21,7 @@
         <br>
 
         <v-button
-            theme="primary"
+            :theme="currentThemeFavoriteButton"
             size="large"
             wide
             @click="onAddToFavorites"
@@ -41,7 +41,7 @@
 </template>
 
 <script setup>
-    import { ref } from 'vue';
+    import { ref, computed } from 'vue';
     import VButton from '@/components/UI/VButton.vue';
     import VInputNumber from '@/components/UI/VInputNumber.vue';
 
@@ -72,6 +72,12 @@
     ]);
 
     const count = ref(1);
+
+    const currentThemeFavoriteButton = computed(() => {
+        return props.isFavorites
+            ? 'danger'
+            : 'success'
+    });
 
     function onAddToCart () {
         emit('addToCart', {
