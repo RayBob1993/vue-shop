@@ -5,16 +5,8 @@ export class CatalogApiService {
         return api.get('/catalog');
     }
 
-    static getCategory (id, test) {
-        const query = test ? `&test=${test}`: '';
-
-        return api.get(`/products?categoryId=${id}${query}`);
-    }
-
-    static getCategorySort (id, sort) {
-        const orderType = sort ? 'desc' : 'asc';
-        
-        return api.get(`/products?categoryId=${id}&_sort=title&_order=${orderType}`);
+    static getCategory (id, params) {
+        return api.get(`/products?categoryId=${id}`, params);
     }
 
     static getProduct (id) {

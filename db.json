@@ -96,6 +96,8 @@
   "products": [
     {
       "id": 1,
+      "brand": "Apple",
+      "color": "white",
       "image": "https://placehold.co/600x400",
       "images": [
         "https://placehold.co/600x401",
@@ -111,13 +113,13 @@
       "title": "iPhone 10",
       "categoryId": 1,
       "price": 10000,
-      "test": "1",
       "userId": 2,
       "isFavorites": false
     },
     {
-      "test": "1",
       "id": 2,
+      "brand": "Samsung",
+      "color": "black",
       "title": "Samsung note 2",
       "image": "https://placehold.co/600x400",
       "images": [
@@ -137,8 +139,9 @@
       "isFavorites": true
     },
     {
-      "test": "2",
       "id": 3,
+      "brand": "Acer",
+      "color": "red",
       "title": "Acer ,fkf,fk",
       "image": "https://placehold.co/600x400",
       "images": [
@@ -152,14 +155,15 @@
         "https://placehold.co/600x408"
       ],
       "description": "d;ofnvos dnfoiv soidnfoi bnsdfoignb oidfngoib ndfoing boidfng boin",
-      "categoryId": 2,
+      "categoryId": 1,
       "price": 6000,
       "userId": 2,
       "isFavorites": false
     },
     {
-      "test": "2",
       "id": 4,
+      "brand": "Apple",
+      "color": "red",
       "image": "https://placehold.co/600x400",
       "images": [
         "https://placehold.co/600x401",
@@ -179,8 +183,9 @@
       "isFavorites": true
     },
     {
-      "test": "1",
       "id": 5,
+      "brand": "Samsung",
+      "color": "black",
       "title": "Samsung note 2",
       "image": "https://placehold.co/600x400",
       "images": [
@@ -200,7 +205,8 @@
       "isFavorites": false
     },
     {
-      "test": "2",
+      "brand": "Acer",
+      "color": "white",
       "image": "https://placehold.co/600x400",
       "title": "Ноут Димы",
       "images": [
@@ -218,6 +224,28 @@
       "price": "100500",
       "userId": 1,
       "id": 6,
+      "isFavorites": true
+    },
+    {
+      "brand": "Acer",
+      "color": "red",
+      "image": "https://placehold.co/600x400",
+      "title": "Ноут Димы",
+      "images": [
+        "https://placehold.co/600x401",
+        "https://placehold.co/600x402",
+        "https://placehold.co/600x403",
+        "https://placehold.co/600x404",
+        "https://placehold.co/600x405",
+        "https://placehold.co/600x406",
+        "https://placehold.co/600x407",
+        "https://placehold.co/600x408"
+      ],
+      "description": "d;ofnvos dnfoiv soidnfoi bnsdfoignb oidfngoib ndfoing boidfng boin",
+      "categoryId": 2,
+      "price": "100500",
+      "userId": 1,
+      "id": 7,
       "isFavorites": true
     }
   ],

@@ -1,8 +1,20 @@
 const BASE_URL = 'http://localhost:3000';
 
 export const api = {
-    get (url) {
-        return fetch(BASE_URL + url, {
+    get (url, params) {
+        const filteredParams = params
+            ? Object.fromEntries(Object.entries(params).filter(value => value[1]))
+            : null;
+
+        const searchParams = filteredParams
+            ? new URLSearchParams(filteredParams)
+            : null;
+
+        const queryParams = searchParams
+            ? searchParams.size > 0 ? `&${searchParams.toString()}` : ''
+            : '';
+
+        return fetch(BASE_URL + url + queryParams, {
             headers: { 
                 'Content-Type': 'application/json'
             }
