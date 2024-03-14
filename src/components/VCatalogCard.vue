@@ -1,7 +1,21 @@
 <template>
     <article class="v-catalog-card">
         <router-link :to="`/catalog/${category}/${id}`">
-            <img :src="image" class="v-catalog-card__image">
+            <div 
+                v-if="images.length"
+                class="v-catalog-card__gallery"
+            >
+                <img :src="currentImage" class="v-catalog-card__gallery-image">
+
+                <div class="v-catalog-card__gallery-areas">
+                    <div 
+                        v-for="(area, areaIndex) in images"
+                        class="v-catalog-card__gallery-areas__item"
+                        @mouseover="onMouseover(areaIndex)"
+                    />
+                </div>
+            </div>
+
         </router-link>
 
         <router-link :to="`/catalog/${category}/${id}`">
@@ -58,8 +72,8 @@
         title: {
             type: String
         },
-        image: {
-            type: String
+        images: {
+            type: Array
         },
         isFavorites: {
             type: Boolean
@@ -73,6 +87,10 @@
 
     const count = ref(1);
 
+    const currentImageIndex = ref(0);
+
+    const currentImage = computed(() => props.images[currentImageIndex.value]);
+
     const currentThemeFavoriteButton = computed(() => {
         return props.isFavorites
             ? 'danger'
@@ -82,7 +100,7 @@
     function onAddToCart () {
         emit('addToCart', {
             title: props.title,
-            image: props.image,
+            images: props.images,
             price: props.price,
             id: props.id,
             quantity: count.value
@@ -95,6 +113,10 @@
             isFavorites: !props.isFavorites
         });
     }
+
+    function onMouseover (index) {
+        currentImageIndex.value = index;
+    }
 </script>
 
 <style>
@@ -102,11 +124,29 @@
         border: 1px solid;
     }
 
-    .v-catalog-card__image {
-        display: block;
+    .v-catalog-card__gallery {
+        position: relative;
         width: 100%;
         height: 200px;
+    }
 
-        object-fit: cover;
+    .v-catalog-card__gallery-image {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    .v-catalog-card__gallery-areas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        flex-flow: row nowrap;
+    }
+
+    .v-catalog-card__gallery-areas__item {
+        flex: 1;
     }
 </style>

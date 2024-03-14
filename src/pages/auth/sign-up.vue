@@ -1,68 +1,71 @@
 <template>
-    <v-container>
-       <label>
-            <div>Логин</div>
+     <v-layout-default>
+          <v-container>
+               <label>
+                    <div>Логин</div>
 
-            <input type="text" v-model="model.login">
-       </label>
+                    <input type="text" v-model="model.login">
+               </label>
 
-       <label>
-            <div>Имя</div>
+               <label>
+                    <div>Имя</div>
 
-            <input type="text" v-model="model.firstname">
-       </label>
+                    <input type="text" v-model="model.firstname">
+               </label>
 
-       <label>
-            <div>Фамилия</div>
+               <label>
+                    <div>Фамилия</div>
 
-            <input type="text" v-model="model.lastname">
-       </label>
+                    <input type="text" v-model="model.lastname">
+               </label>
 
-       <label>
-            <div>Email</div>
+               <label>
+                    <div>Email</div>
 
-            <input type="email" v-model="model.email">
-       </label>
+                    <input type="email" v-model="model.email">
+               </label>
 
-       <label>
-            <div>Дата рождения</div>
+               <label>
+                    <div>Дата рождения</div>
 
-            <input type="date" v-model="model.birthday">
-       </label>
+                    <input type="date" v-model="model.birthday">
+               </label>
 
-       <label>
-            <div>Телефон</div>
+               <label>
+                    <div>Телефон</div>
 
-            <input type="tel" v-model="model.phone">
-       </label>
+                    <input type="tel" v-model="model.phone">
+               </label>
 
-       <label>
-            <div>Пароль</div>
+               <label>
+                    <div>Пароль</div>
 
-            <input type="password" v-model="model.password">
-       </label>
+                    <input type="password" v-model="model.password">
+               </label>
 
-       <label>
-            <div>Подтверждение пароля</div>
+               <label>
+                    <div>Подтверждение пароля</div>
 
-            <input type="password" v-model="model.confirmPassword">
-       </label>
+                    <input type="password" v-model="model.confirmPassword">
+               </label>
 
-        <br>
+               <br>
 
-       <button @click="onSubmit">Зарегистрироваться</button>
+               <button @click="onSubmit">Зарегистрироваться</button>
 
 
-       <br><br>
+               <br><br>
 
-     <router-link to="/auth/sign-in">
-          Уже зарегистрированы?
-     </router-link>
-    </v-container>  
+               <router-link to="/auth/sign-in">
+                    Уже зарегистрированы?
+               </router-link>
+          </v-container>  
+     </v-layout-default>
 </template>
 
 <script setup>
     import { ref } from 'vue';
+    import VLayoutDefault from '@/components/Layouts/VLayoutDefault.vue';
     import VContainer from '@/components/VContainer.vue';
     import { useRegistration } from '@/composables';
 

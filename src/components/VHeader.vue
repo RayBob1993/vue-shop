@@ -3,11 +3,11 @@
         <v-container>
             <v-row align="center" justify="beetwen" no-gutters>
                 <v-col>
-                    <v-logo/>
+                    <v-sidebar-menu/>
                 </v-col>
 
                 <v-col>
-                    <v-menu/>
+                    <v-logo/>
                 </v-col>
 
                 <v-col>
@@ -47,7 +47,7 @@
     import VRow from '@/components/UI/VRow.vue';
     import VCol from '@/components/UI/VCol.vue';
     import VLogo from '@/components/VLogo.vue';
-    import VMenu from '@/components/VMenu.vue';
+    import VSidebarMenu from '@/components/VSidebarMenu.vue';
     import VContainer from '@/components/VContainer.vue';
 
     const search = ref();
@@ -67,6 +67,14 @@
 
 <style>
     .v-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+
+        background-color: #fff;
+
         padding: 10px 0;
         border-bottom: 1px solid;
     }

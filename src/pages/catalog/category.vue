@@ -1,4 +1,5 @@
 <template>
+  <v-layout-default>
     <v-container>
         <v-row>
             <v-col span="4">
@@ -34,7 +35,7 @@
                   <v-catalog-card
                       :id="product.id"
                       :price="product.price"
-                      :image="product.image"
+                      :images="product.images"
                       :title="product.title"
                       :category="product.categoryId"
                       :is-favorites="product.isFavorites"
@@ -45,6 +46,7 @@
             </v-col>
         </v-row>
     </v-container>
+  </v-layout-default>
 </template>
 
 <script setup>
@@ -52,6 +54,7 @@
     import { useRoute } from "vue-router";
     import { useCart } from '@/composables/useCart';
     import { useCatalogCategory } from '@/composables/useCatalogCategory';
+    import VLayoutDefault from '@/components/Layouts/VLayoutDefault.vue';
     import VContainer from '@/components/VContainer.vue';
     import VRow from '@/components/UI/VRow.vue';
     import VCol from '@/components/UI/VCol.vue';

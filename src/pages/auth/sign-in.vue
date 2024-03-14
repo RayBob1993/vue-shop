@@ -1,4 +1,5 @@
 <template>
+  <v-layout-default>
     <v-container>
         <div>
             <div>Логин</div>
@@ -18,10 +19,12 @@
             Ещё не зарегистрированы?
         </router-link>
     </v-container>  
+  </v-layout-default>
 </template>
 
 <script setup>
     import { ref } from 'vue';
+    import VLayoutDefault from '@/components/Layouts/VLayoutDefault.vue';
     import VContainer from '@/components/VContainer.vue';
     import { useAuth } from '@/composables';
  
