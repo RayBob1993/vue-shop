@@ -11,7 +11,7 @@ export const api = {
             : null;
 
         const queryParams = searchParams
-            ? searchParams.size > 0 ? `&${searchParams.toString()}` : ''
+            ? searchParams.size > 0 ? `?${searchParams.toString()}` : ''
             : '';
 
         return fetch(BASE_URL + url + queryParams, {
@@ -19,7 +19,14 @@ export const api = {
                 'Content-Type': 'application/json'
             }
         })
-            .then(res => res.json());
+            .then(async (res) => {
+                const data = await res.json();
+
+                return {
+                    headers: res.headers,
+                    data
+                };
+            });
     },
     post (url, params) {
         return fetch(BASE_URL + url, {

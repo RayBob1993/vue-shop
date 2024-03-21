@@ -1,82 +1,89 @@
 <template>
   <v-layout-default>
     <v-container>
-        <v-row>
-            <v-col span="4">
-              <div>
-                <h5>Бренды</h5>
-                
-                <input type="radio" v-model="filter.brand" value="Apple"> Apple<br>
-                <input type="radio" v-model="filter.brand" value="Samsung"> Samsung<br>
-                <input type="radio" v-model="filter.brand" value="Acer"> Acer
-              </div>
+      <v-row>
+          <v-col span="4">
+            <div>
+              <h5>Бренды</h5>
+              
+              <input type="radio" v-model="filter.brand" value="Apple"> Apple<br>
+              <input type="radio" v-model="filter.brand" value="Samsung"> Samsung<br>
+              <input type="radio" v-model="filter.brand" value="Acer"> Acer
+            </div>
 
-              <div>
-                <h5>Цвет</h5>
-                <input type="radio" v-model="filter.color" value="white"> Белый<br>
-                <input type="radio" v-model="filter.color" value="black"> Чёрный<br>
-                <input type="radio" v-model="filter.color" value="red"> Красный
-              </div>
+            <div>
+              <h5>Цвет</h5>
+              <input type="radio" v-model="filter.color" value="white"> Белый<br>
+              <input type="radio" v-model="filter.color" value="black"> Чёрный<br>
+              <input type="radio" v-model="filter.color" value="red"> Красный
+            </div>
 
-              <br><br>
+            <br><br>
 
-              <v-button
-                theme="primary"
-                size="large" 
-                @click="onFilter"
+            <v-button
+              theme="primary"
+              size="large" 
+              @click="onFilter"
+            >
+              Применить
+            </v-button>
+
+            <v-button
+              theme="danger"
+              size="large" 
+              @click="onReset"
+            >
+              Сбросить
+            </v-button>
+          </v-col>
+
+          <v-col span="8">
+            <v-row>
+              <v-col>
+                <v-collapse title="Бренды">
+                  <input type="radio" v-model="filter.brand" value="Apple"> Apple<br>
+                  <input type="radio" v-model="filter.brand" value="Samsung"> Samsung<br>
+                  <input type="radio" v-model="filter.brand" value="Acer"> Acer
+                </v-collapse>
+              </v-col>
+
+              <v-col>
+                <v-collapse title="Цвет">
+                  <input type="radio" v-model="filter.color" value="white"> Белый<br>
+                  <input type="radio" v-model="filter.color" value="black"> Чёрный<br>
+                  <input type="radio" v-model="filter.color" value="red"> Красный
+                </v-collapse>
+              </v-col>
+            </v-row>
+
+            <v-row>
+              <v-col
+                  v-for="product in products"
+                  span="4"
+                  md="6"
+                  sm="12"
               >
-                Применить
-              </v-button>
+                <v-catalog-card
+                    :id="product.id"
+                    :price="product.price"
+                    :images="product.images"
+                    :title="product.title"
+                    :category="product.categoryId"
+                    :is-favorites="product.isFavorites"
+                    @add-to-cart="onAddToCart"
+                    @add-to-favorites="onToggleFavorites"
+                />
+              </v-col>
+            </v-row>
+          </v-col>
+      </v-row>
 
-              <v-button
-                theme="danger"
-                size="large" 
-                @click="onReset"
-              >
-                Сбросить
-              </v-button>
-            </v-col>
-
-            <v-col span="8">
-              <v-row>
-                <v-col>
-                  <v-collapse title="Бренды">
-                    <input type="radio" v-model="filter.brand" value="Apple"> Apple<br>
-                    <input type="radio" v-model="filter.brand" value="Samsung"> Samsung<br>
-                    <input type="radio" v-model="filter.brand" value="Acer"> Acer
-                  </v-collapse>
-                </v-col>
-
-                <v-col>
-                  <v-collapse title="Цвет">
-                    <input type="radio" v-model="filter.color" value="white"> Белый<br>
-                    <input type="radio" v-model="filter.color" value="black"> Чёрный<br>
-                    <input type="radio" v-model="filter.color" value="red"> Красный
-                  </v-collapse>
-                </v-col>
-              </v-row>
-
-              <v-row>
-                <v-col
-                    v-for="product in products"
-                    span="4"
-                    md="6"
-                    sm="12"
-                >
-                  <v-catalog-card
-                      :id="product.id"
-                      :price="product.price"
-                      :images="product.images"
-                      :title="product.title"
-                      :category="product.categoryId"
-                      :is-favorites="product.isFavorites"
-                      @add-to-cart="onAddToCart"
-                      @add-to-favorites="onToggleFavorites"
-                  />
-                </v-col>
-              </v-row>
-            </v-col>
-        </v-row>
+      <button 
+        v-for="page in pagination.pageCount"
+        @click="onChangePage(page)"
+      >
+        {{ page }}
+      </button>
     </v-container>
   </v-layout-default>
 </template>
@@ -102,7 +109,7 @@
       color: route.query.color
     });
 
-    const { products, getProductsCategory } = useCatalogCategory();
+    const { products, pagination, getProductsCategory } = useCatalogCategory();
     const { onAddToCart } = useCart();
     const { onToggleFavorites } = useFavorites();
 
@@ -126,6 +133,12 @@
 
       router.push({
         query: filter.value
+      });
+    }
+
+    async function onChangePage (page) {
+      await getProductsCategory(route.params.category, {
+        _page: page
       });
     }
 </script>

@@ -8,7 +8,7 @@ export function useCatalog () {
     const categories = ref([]);
 
     async function getCatalog () {
-        const data = await CatalogApiService.getCategories()
+        const { data } = await CatalogApiService.getCategories()
             
         categories.value = data;
     }

@@ -20,7 +20,7 @@ export function useCart () {
     });
 
     async function getCart () {
-        const data = await CartApiService.getCart();
+        const { data } = await CartApiService.getCart();
         
         cart.value = data;
     }

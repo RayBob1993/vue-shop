@@ -8,7 +8,7 @@ export function useSearch () {
     async function getSearch (query) {
         isLoading.value = true;
 
-        const data = await SearchApiService.getSearch(query);
+        const { data } = await SearchApiService.getSearch(query);
             
         products.value = data;
 

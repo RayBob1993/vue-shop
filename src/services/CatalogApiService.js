@@ -2,11 +2,16 @@ import { api } from '@/utils';
 
 export class CatalogApiService {
     static getCategories () {
-        return api.get('/catalog');
+        return api.get('/categories');
     }
 
     static getCategory (id, params) {
-        return api.get(`/products?categoryId=${id}`, params);
+        return api.get('/products', {
+            _page: 1,
+            ...params,
+            categoryId: id,
+            _limit: 6
+        });
     }
 
     static getProduct (id) {

@@ -9,7 +9,7 @@ export function useAuth () {
     const router = useRouter();
 
     async function onLogin (params) {
-        const data = await AuthApiService.login(params)
+        const { data } = await AuthApiService.login(params)
             
         if (!data.length) {
             alert('Не верный логин или пароль')
@@ -27,7 +27,7 @@ export function useAuth () {
     async function getUser () {
         const userId = JSON.parse(localStorage.getItem('user'));
 
-        const data = await AuthApiService.getUser(userId.id)
+        const { data } = await AuthApiService.getUser(userId.id)
             
         user.value = data[0];
     }
@@ -54,7 +54,7 @@ export function useAuth () {
     }
 
     async function updateUser (id, params) {
-        const data = await AuthApiService.updateUser(id, params)
+        const { data } = await AuthApiService.updateUser(id, params)
         
         user.value = data;
     }

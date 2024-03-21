@@ -8,7 +8,7 @@ export function useUserProducts () {
     const products = ref([]);
 
     async function getUserProducts () {
-        const data = await CatalogApiService.getUserProducts(user.value.id)
+        const { data } = await CatalogApiService.getUserProducts(user.value.id)
             
         products.value = data;
     }

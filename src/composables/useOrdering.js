@@ -5,7 +5,7 @@ export function useOrdering () {
     const { user } = useAuth();
 
     async function createOrder (params) {
-        const cart = await CartApiService.getCart();
+        const { data } = await CartApiService.getCart();
 
         await OrdersApiService.createOrder({
             ...params,
