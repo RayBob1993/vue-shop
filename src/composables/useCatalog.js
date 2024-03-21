@@ -7,19 +7,18 @@ export function useCatalog () {
 
     const categories = ref([]);
 
-    function getCatalog () {
-        CatalogApiService.getCategories()
-            .then(data => {
-                categories.value = data;
-            });
+    async function getCatalog () {
+        const data = await CatalogApiService.getCategories()
+            
+        categories.value = data;
     }
 
-    function addProduct (params) {
-        CatalogApiService.addProduct({
+    async function addProduct (params) {
+        await CatalogApiService.addProduct({
             ...params,
             userId: user.value.id,
             isFavorite: false
-        })
+        });
     }
 
     return {

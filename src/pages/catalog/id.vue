@@ -10,7 +10,7 @@
                     <h3>{{ product.title }}</h3>
 
                     <div>
-                        {{ product.price }}р.
+                        {{ formattedPrice }}
                     </div>
 
                     <br>
@@ -56,6 +56,7 @@
 
 <script setup>
     import { ref, computed } from 'vue';
+    import { priceFormat } from '@/utils';
     import { useRoute } from "vue-router";
     import { CatalogApiService } from '@/services';
     import VLayoutDefault from '@/components/Layouts/VLayoutDefault.vue';
@@ -71,6 +72,8 @@
     const { onToggleFavorites } = useFavorites();
 
     const product = ref();
+
+    const formattedPrice = computed(() => priceFormat(product.value.price));
 
     const currentThemeFavoriteButton = computed(() => {
         return product.value.isFavorites

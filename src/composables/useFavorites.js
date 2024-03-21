@@ -1,8 +1,10 @@
 import { FavoritesApiService } from '@/services';
 
 export function useFavorites () {
-    function onToggleFavorites (params) {
-        FavoritesApiService.toggle(params);
+    async function onToggleFavorites (params) {
+        await FavoritesApiService.toggle(params);
+
+        alert('Товар добавлен в избранное')
     }
 
     return {

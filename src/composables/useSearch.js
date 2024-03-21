@@ -5,15 +5,14 @@ export function useSearch () {
     const products = ref([]);
     const isLoading = ref(false);
 
-    function getSearch (query) {
+    async function getSearch (query) {
         isLoading.value = true;
 
-        SearchApiService.getSearch(query)
-            .then(data => {
-                products.value = data;
+        const data = await SearchApiService.getSearch(query);
+            
+        products.value = data;
 
-                isLoading.value = false;
-            });
+        isLoading.value = false;
     }
 
     return {

@@ -4,13 +4,12 @@ import { useAuth } from '@/composables';
 export function useRegistration () {
     const { onLogin } = useAuth();
 
-    function signUp (params) {
-        RegistrationApiService.signUp(params)
-        .then(() => {
-            onLogin({
-                login: params.login,
-                password: params.password
-            });
+    async function signUp (params) {
+        await RegistrationApiService.signUp(params)
+        
+        await onLogin({
+            login: params.login,
+            password: params.password
         });
     }
 

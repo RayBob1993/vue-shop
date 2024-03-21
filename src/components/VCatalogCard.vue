@@ -25,7 +25,7 @@
         <br>
 
         <div>
-            {{ price }} р.
+            {{ formattedPrice }}
         </div>
 
         <br>
@@ -56,6 +56,7 @@
 
 <script setup>
     import { ref, computed } from 'vue';
+    import { priceFormat } from '@/utils';
     import VButton from '@/components/UI/VButton.vue';
     import VInputNumber from '@/components/UI/VInputNumber.vue';
 
@@ -79,6 +80,8 @@
             type: Boolean
         }
     });
+
+    const formattedPrice = computed(() => priceFormat(props.price));
 
     const emit = defineEmits([
         'addToCart',

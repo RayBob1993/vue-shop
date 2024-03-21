@@ -69,12 +69,14 @@
 
 <script setup>
     import { ref } from 'vue';
+    import { useRouter } from 'vue-router';
     import VLayoutDefault from '@/components/Layouts/VLayoutDefault.vue';
     import VContainer from '@/components/VContainer.vue';
     import VButton from '@/components/UI/VButton.vue';
     import { useOrdering } from '@/composables';
 
     const { createOrder } = useOrdering();
+    const router = useRouter();
 
     const model = ref({
         address: '',
@@ -89,5 +91,9 @@
 
     function onSubmit () {
         createOrder(model.value);
+
+        alert('Ваш заказ успешно оформлен');
+
+        router.push('/profile');
     }
 </script>

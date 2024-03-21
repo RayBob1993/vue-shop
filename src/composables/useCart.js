@@ -19,38 +19,31 @@ export function useCart () {
         }, 0);
     });
 
-    function getCart () {
-        CartApiService.getCart()
-            .then(data => {
-                cart.value = data;
-            });
+    async function getCart () {
+        const data = await CartApiService.getCart();
+        
+        cart.value = data;
     }
 
-    function onAddToCart (params) {
-        CartApiService.addToCart(params).then(() => {
-            alert('Товар добавлен успешно!')
-        });
+    async function onAddToCart (params) {
+        await CartApiService.addToCart(params);
+
+        alert('Товар добавлен успешно!');
     }
 
-    function onChangeCount (params) {
-        CartApiService.changeCount(params)
-            .then(() => {
-                getCart();
-            });
+    async function onChangeCount (params) {
+        await CartApiService.changeCount(params)
+        await getCart();
     }
 
-    function onDelete (id) {
-        CartApiService.delete(id)
-            .then(() => {
-                getCart();
-            });
+    async function onDelete (id) {
+        await CartApiService.delete(id)
+        await getCart();
     }
 
-    function onChangeDelay (params) {
-        CartApiService.changeDelay(params)
-            .then(() => {
-                getCart();
-            });
+    async function onChangeDelay (params) {
+        await CartApiService.changeDelay(params)
+        await getCart();
     }
 
     return {

@@ -4,15 +4,14 @@ import { useAuth } from './useAuth';
 export function useOrdering () {
     const { user } = useAuth();
 
-    function createOrder (params) {
-        CartApiService.getCart()
-            .then((data) => {
-                OrdersApiService.createOrder({
-                    ...params,
-                    products: data,
-                    userId: user.value.id
-                });
-            })
+    async function createOrder (params) {
+        const cart = await CartApiService.getCart();
+
+        await OrdersApiService.createOrder({
+            ...params,
+            products: cart,
+            userId: user.value.id
+        });
     }
 
     return {

@@ -36,6 +36,8 @@
 <style>
     .v-button {
         border: 1px solid;
+
+        cursor: pointer;
     }
 
     .v-button--wide {

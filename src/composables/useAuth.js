@@ -8,30 +8,28 @@ const user = ref(null);
 export function useAuth () {
     const router = useRouter();
 
-    function onLogin (params) {
-        AuthApiService.login(params)
-            .then(data => {
-                if (!data.length) {
-                    alert('Не верный логин или пароль')
+    async function onLogin (params) {
+        const data = await AuthApiService.login(params)
+            
+        if (!data.length) {
+            alert('Не верный логин или пароль')
 
-                    return;
-                }
+            return;
+        }
 
-                localStorage.setItem('user', JSON.stringify(data[0]));
+        localStorage.setItem('user', JSON.stringify(data[0]));
 
-                authInit();
+        authInit();
 
-                router.push('/profile');
-            });
+        router.push('/profile');
     }
 
-    function getUser () {
+    async function getUser () {
         const userId = JSON.parse(localStorage.getItem('user'));
 
-        AuthApiService.getUser(userId.id)
-            .then(data => {
-                user.value = data[0];
-            });
+        const data = await AuthApiService.getUser(userId.id)
+            
+        user.value = data[0];
     }
 
     function logout () {
@@ -43,7 +41,7 @@ export function useAuth () {
         router.push('/');
     }
 
-    function authInit () {
+    async function authInit () {
         const token = localStorage.getItem('user');
 
         if (!token) {
@@ -52,14 +50,13 @@ export function useAuth () {
 
         isAuth.value = true;
 
-        getUser();
+        await getUser();
     }
 
-    function updateUser (id, params) {
-        AuthApiService.updateUser(id, params)
-        .then(data => {
-            user.value = data;
-        });
+    async function updateUser (id, params) {
+        const data = await AuthApiService.updateUser(id, params)
+        
+        user.value = data;
     }
 
     return {

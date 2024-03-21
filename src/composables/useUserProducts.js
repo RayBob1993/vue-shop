@@ -7,11 +7,10 @@ export function useUserProducts () {
 
     const products = ref([]);
 
-    function getUserProducts () {
-        CatalogApiService.getUserProducts(user.value.id)
-            .then(data => {
-                products.value = data;
-            });
+    async function getUserProducts () {
+        const data = await CatalogApiService.getUserProducts(user.value.id)
+            
+        products.value = data;
     }
 
     return {

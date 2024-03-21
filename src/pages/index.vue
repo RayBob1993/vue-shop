@@ -18,6 +18,7 @@
                         :category="product.categoryId"
                         :is-favorites="product.isFavorites"
                         @addToFavorites="onToggleFavorites"
+                        @add-to-cart="onAddToCart"
                     />
                 </v-col>
             </v-row>
@@ -39,6 +40,7 @@
                         :category="product.categoryId"
                         :is-favorites="product.isFavorites"
                         @add-to-favorites="onToggleFavorites"
+                        @add-to-cart="onAddToCart"
                     />
                 </v-col>
             </v-row>
@@ -47,7 +49,7 @@
 </template>
 
 <script setup>
-    import { useCatalogCategory, useFavorites } from '@/composables';
+    import { useCatalogCategory, useFavorites, useCart } from '@/composables';
     import VLayoutDefault from '@/components/Layouts/VLayoutDefault.vue';
     import VContainer from '@/components/VContainer.vue';
     import VRow from '@/components/UI/VRow.vue';
@@ -55,6 +57,7 @@
     import VCatalogCard from '@/components/VCatalogCard.vue';
 
     const { onToggleFavorites } = useFavorites();
+    const { onAddToCart } = useCart();
 
     const { 
         products: smartphones, 
