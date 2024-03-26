@@ -24,7 +24,9 @@ export function useCatalogCategory () {
     async function getProductsCategory (id, params) {
         const { data, headers } = await CatalogApiService.getCategory(id, params);
 
-        calculatePagination(headers.get('x-total-count'), params._page);
+        if (params?._page) {
+            calculatePagination(headers.get("x-total-count"), params._page);
+        }
 
         products.value = data;
     }
